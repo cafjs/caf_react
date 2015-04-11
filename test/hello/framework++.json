@@ -1,0 +1,25 @@
+{
+    "name": "top",
+    "components": [
+        {
+            "name": "log",
+            "env" : {
+                "logLevel" : "DEBUG"
+            }
+        },
+        {
+            "name": "cp"
+        },
+        {
+            "name" : "react",
+            "module": "../../index.js#plug",
+            "description": "React.js background rendering",
+            "env": {
+                "appFileName" : "index.html",
+                "separator" : "<section id=\"content\">",
+                "cacheService" : "cp",
+                "expiresInSec" : 10
+            }
+        }
+    ]
+}
