@@ -6,13 +6,15 @@ See http://www.cafjs.com
 
 ## CAF React.js background rendering plugin
 
+[![Build Status](http://ci.cafjs.com/github.com/cafjs/caf_react/status.svg?branch=master)](http://ci.cafjs.com/github.com/cafjs/caf_react)
+
 Reduces latency for React.js applications by rendering them in the cloud with a CA. 
 
 Rendering could be triggered by a CA's state change, or periodically, so that requests always find a reasonably up-to-date version in the (Redis) cache.
 
 To access that pre-rendered page we simply can do a GET using a secret, random cache key in the query:
 
-      http://foo.vcap.me:3000/?cache=dfgsraa44ww6632ss
+      http://foo.vcap.me:3000?cache=dfgsraa44ww6632ss
 
 The page gets cached by Redis so that any CA can serve this http request, eliminating redirections that affect latency.
 
