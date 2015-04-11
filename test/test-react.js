@@ -56,7 +56,7 @@ module.exports = {
                             },
                             function(res, cb) {
                                 test.equals(res, 'Bye:foo');
-                                request('http://root-test.vcap.me:3000?cache=foo',
+                                request('http://root-test.vcap.me:3000?cacheKey=foo',
                                         function (error, response, body) {
                                             test.ok(!error);
                                             test.equals(response.statusCode,
