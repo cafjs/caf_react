@@ -56,6 +56,10 @@ module.exports = {
                             },
                             function(res, cb) {
                                 test.equals(res, 'Bye:foo');
+                                setTimeout (function() {
+                                    s.render(cb);
+                                }, 3000);
+                            }, function(res, cb) {
                                 request('http://root-test.vcap.me:3000?cacheKey=foo',
                                         function (error, response, body) {
                                             test.ok(!error);

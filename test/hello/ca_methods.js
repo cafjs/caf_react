@@ -38,9 +38,13 @@ exports.methods = {
     },
     hello: function(msg, cb) {
         this.$.react.setCacheKey(msg);
-        this.$.react.render(app.main, [this.state.pulses]);
+        this.$.react.coin();
         this.state.lastMsg = msg;
         cb(null, 'Bye:' + msg);
+    },
+    render: function(cb) {
+        this.$.react.render(app.main, [this.state.pulses]);
+        cb(null, null);
     }
 
 };

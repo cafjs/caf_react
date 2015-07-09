@@ -58,6 +58,7 @@ where `separator` is a token to highlight an insertion point in the template for
             "env" : {
                 "maxRetries" : "$._.env.maxRetries",
                 "retryDelay" : "$._.env.retryDelay"
+                "coinPlayTime" : 900
             },
             "components" : [
                 {
@@ -70,3 +71,6 @@ where `separator` is a token to highlight an insertion point in the template for
                 }
             ]
         }
+
+where `coinPlayTime` is the number of seconds it  continues to render after
+ a live interaction with the user, i.e., a call to the `coin` method.
