@@ -2,6 +2,10 @@
     "name" : "ca",
     "components" : [
         {
+            "name": "security",
+            "module" : null
+        },
+        {
             "module": "../../index.js#plug_ca",
             "name": "react",
             "description": "Manages background rendering for this CA.",
