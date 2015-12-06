@@ -2,7 +2,7 @@ var caf_core = require('caf_core');
 var json_rpc = caf_core.caf_transport.json_rpc;
 var myUtils = caf_core.caf_components.myUtils;
 var async = caf_core.async;
-var cli = require('caf_cli');
+var cli = caf_core.caf_cli;
 var hello = require('./hello/main.js');
 var request = require('request');
 
@@ -49,7 +49,7 @@ module.exports = {
                             function(cb) {
                                 s = new cli
                                     .Session('ws://root-test.vcap.me:3000',
-                                             'antonio-c1');
+                                             'antonio-reactc1');
                                 s.onopen = function() {
                                     s.hello('foo', cb);
                                 };
