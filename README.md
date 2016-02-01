@@ -5,8 +5,7 @@ Co-design permanent, active, stateful, reliable cloud proxies with your web app.
 See http://www.cafjs.com 
 
 ## CAF React.js background rendering plugin
-
-[![Build Status](http://ci.cafjs.com/github.com/cafjs/caf_react/status.svg?branch=master)](http://ci.cafjs.com/github.com/cafjs/caf_react)
+[![Build Status](http://ci.cafjs.com/api/badges/cafjs/caf_react/status.svg)](http://ci.cafjs.com/cafjs/caf_react)
 
 Reduces latency for React.js applications by rendering them in the cloud with a CA. 
 
