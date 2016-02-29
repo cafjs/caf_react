@@ -47,9 +47,8 @@ module.exports = {
         var s;
         async.waterfall([
                             function(cb) {
-                                s = new cli
-                                    .Session('ws://root-test.vcap.me:3000',
-                                             'antonio-reactc1');
+                                s = new cli.Session('ws://root-test.vcap.me:3000',
+                                                    'antonio-reactc1');
                                 s.onopen = function() {
                                     s.hello('foo', cb);
                                 };
@@ -58,7 +57,7 @@ module.exports = {
                                 test.equals(res, 'Bye:foo');
                                 setTimeout (function() {
                                     s.render(cb);
-                                }, 3000);
+                                }, 1000);
                             }, function(res, cb) {
                                 request('http://root-test.vcap.me:3000?cacheKey=foo',
                                         function (error, response, body) {
