@@ -1,17 +1,20 @@
 {
     "name": "caf_react",
     "description": "Background rendering of React.js applications with a Cloud Assistant.",
-    "version": "0.2.10",
+    "version": "0.2.11",
     "author": "Antonio Lain <antlai@cafjs.com>",
     "dependencies": {
         "caf_core" : "^0.2.0"
     },
     "devDependencies": {
+        "eslint": "^3.1.1",
         "nodeunit" : ">=0.9",
         "request" : "^2.55.0"
     },
     "scripts": {
-        "test": "node ./node_modules/.bin/nodeunit"
+        "test": "node ./node_modules/.bin/nodeunit",
+        "eslint" : "./node_modules/.bin/eslint .",
+        "eslintfix" : "./node_modules/.bin/eslint --fix ."
     },
     "main": "index",
     "engines": { "node": ">= 0.10.29" }
