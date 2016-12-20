@@ -2,27 +2,29 @@
 
 Co-design permanent, active, stateful, reliable cloud proxies with your web app.
 
-See http://www.cafjs.com 
+See http://www.cafjs.com
 
 ## CAF React.js background rendering plugin
 [![Build Status](http://ci.cafjs.com/api/badges/cafjs/caf_react/status.svg)](http://ci.cafjs.com/cafjs/caf_react)
 
-Reduces latency for React.js applications by rendering them in the cloud with a CA. 
+Reduces latency for React.js applications by server-rendering the UI with a CA.
 
-Rendering could be triggered by a CA's state change, or periodically, so that requests always find a reasonably up-to-date version in the (Redis) cache.
+Rendering could be triggered by a CA's state change, or periodically. The goal is that there is always a reasonably up-to-date version in the (Redis) cache.
 
-To access that pre-rendered page we simply can do a GET using a secret, random cache key in the query:
+To access that pre-rendered page we simply do a http GET using a secret, random cache key in the query:
 
       http://foo.vcap.me:3000?cacheKey=dfgsraa44ww6632ss
 
-The page gets cached by Redis so that any CA can serve this http request, eliminating redirections that affect latency.
+The page is cached by Redis, and any CA can serve this http request, eliminating redirections that increase latency.
 
 
 ## API
 
-    lib/proxy_react.js
- 
+See {@link module:caf_react/proxy_react}
+
 ## Configuration Example
+
+See {@link module:caf_react/plug_react} and  {@link module:caf_react/plug_ca_react}
 
 ### framework.json
 
@@ -38,15 +40,6 @@ The page gets cached by Redis so that any CA can serve this http request, elimin
                 "expiresInSec" : 10
             }
         }
-
-where `separator` is a token to highlight an insertion point in the template for the rendered content, i.e., it splits the template in two.
-
-`expiresInSec` enables grabage collection of the cache by expiring entries.
-
-`appFileName` is a file path relative to the location of `ca_methods.js`. Optionally, an absolute directory path can be specified with property `appDir`.
-
-`cacheService` is the name of plug used for remote caching of rendered entries, i.e., $._.$[`cacheService`]
-
 
 ### ca.json
 
@@ -70,6 +63,3 @@ where `separator` is a token to highlight an insertion point in the template for
                 }
             ]
         }
-
-where `coinPlayTime` is the number of seconds it  continues to render after
- a live interaction with the user, i.e., a call to the `coin` method.
