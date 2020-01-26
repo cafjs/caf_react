@@ -1,15 +1,16 @@
-var caf_core = require('caf_core');
-var json_rpc = caf_core.caf_transport.json_rpc;
-var myUtils = caf_core.caf_components.myUtils;
-var async = caf_core.async;
-var cli = caf_core.caf_cli;
-var hello = require('./hello/main.js');
-var request = require('request');
+const caf_core = require('caf_core');
+const json_rpc = caf_core.caf_transport.json_rpc;
+const myUtils = caf_core.caf_components.myUtils;
+const async = caf_core.async;
+const cli = caf_core.caf_cli;
+const hello = require('./hello/main.js');
+const request = require('request');
 
-var app = hello;
+const app = hello;
 
-var HOST='root-test.vcap.me';
-var PORT=3000;
+const HOST='root-test.vcap.me';
+const PORT=3000;
+const CA= 'antonio-react' +  myUtils.uniqueId();
 
 process.on('uncaughtException', function (err) {
                console.log("Uncaught Exception: " + err);
@@ -20,7 +21,7 @@ process.on('uncaughtException', function (err) {
 
 module.exports = {
     setUp: function (cb) {
-        var self = this;
+        const self = this;
         app.load(null, {name: 'top'}, 'framework.json', null,
                       function(err, $) {
                           if (err) {
@@ -34,7 +35,7 @@ module.exports = {
                       });
     },
     tearDown: function (cb) {
-        var self = this;
+        const self = this;
         if (!this.$) {
             cb(null);
         } else {
@@ -42,45 +43,44 @@ module.exports = {
         }
     },
     hello: function(test) {
-        var self = this;
+        const self = this;
         test.expect(9);
         var s;
         async.waterfall([
-                            function(cb) {
-                                s = new cli.Session('ws://root-test.vcap.me:3000',
-                                                    'antonio-reactc1');
-                                s.onopen = function() {
-                                    s.hello('foo', cb);
-                                };
-                            },
-                            function(res, cb) {
-                                test.equals(res, 'Bye:foo');
-                                setTimeout (function() {
-                                    s.render(cb);
-                                }, 1000);
-                            }, function(res, cb) {
-                                request('http://root-test.vcap.me:3000?cacheKey=foo',
-                                        function (error, response, body) {
-                                            test.ok(!error);
-                                            test.equals(response.statusCode,
-                                                        200);
-                                            console.log(body);
-                                            test.equals(body.length, 580);
-                                            test.equals(typeof body, 'string');
-                                            test.equals(body.indexOf('0'), 506);
-                                            s.onclose = function(err) {
-                                                test.ok(!err);
-                                                test.ok(s.isClosed());
-                                                cb(null, null);
-                                            };
-                                            s.close();
-                                        }
-                                       );
-                            }
-                     ], function(err, res) {
-                         test.ifError(err);
+            function(cb) {
+                s = new cli.Session('ws://root-test.vcap.me:3000',CA);
+                s.onopen = function() {
+                    s.hello('foo', cb);
+                };
+            },
+            function(res, cb) {
+                test.equals(res, 'Bye:foo');
+                setTimeout (function() {
+                    s.render(cb);
+                }, 1000);
+            }, function(res, cb) {
+                request('http://root-test.vcap.me:3000?cacheKey=foo',
+                        function (error, response, body) {
+                            test.ok(!error);
+                            test.equals(response.statusCode,
+                                        200);
+                            console.log(body);
+                            test.equals(body.length, 580);
+                            test.equals(typeof body, 'string');
+                            test.equals(body.indexOf('0'), 506);
+                            s.onclose = function(err) {
+                                test.ok(!err);
+                                test.ok(s.isClosed());
+                                cb(null, null);
+                            };
+                            s.close();
+                        }
+                       );
+            }
+        ], function(err, res) {
+            test.ifError(err);
 
-                         test.done();
-                     });
+            test.done();
+        });
     }
 };
