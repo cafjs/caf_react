@@ -1,10 +1,10 @@
-# CAF (Cloud Assistant Framework)
+# Caf.js
 
-Co-design permanent, active, stateful, reliable cloud proxies with your web app.
+Co-design permanent, active, stateful, reliable cloud proxies with your web app and gadgets.
 
-See http://www.cafjs.com
+See https://www.cafjs.com
 
-## CAF React.js background rendering plugin
+## Library for React.js background rendering
 [![Build Status](https://travis-ci.org/cafjs/caf_react.svg?branch=master)](https://travis-ci.org/cafjs/caf_react)
 
 
@@ -12,11 +12,11 @@ Reduces latency for React.js applications by server-rendering the UI with a CA.
 
 Rendering could be triggered by a CA's state change, or periodically. The goal is that there is always a reasonably up-to-date version in the (Redis) cache.
 
-To access that pre-rendered page we simply do a http GET using a secret, random cache key in the query:
+To access that pre-rendered page we simply do a http GET using an unguessable cache key in the query:
 
       http://foo.vcap.me:3000?cacheKey=dfgsraa44ww6632ss
 
-The page is cached by Redis, and any CA can serve this http request, eliminating redirections that increase latency.
+The page is cached by `Redis`, and any CA can serve this http request, eliminating redirections that increase latency.
 
 
 ## API
