@@ -13,9 +13,9 @@ Reduces latency for React.js applications by server-rendering the UI with a CA.
 Rendering could be triggered by a CA's state change, or periodically. The goal is that there is always a reasonably up-to-date version in the (Redis) cache.
 
 To access that pre-rendered page we simply do a http GET using an unguessable cache key in the query:
-
+```
       http://foo.vcap.me:3000?cacheKey=dfgsraa44ww6632ss
-
+```
 The page is cached by `Redis`, and any CA can serve this http request, eliminating redirections that increase latency.
 
 
@@ -28,7 +28,7 @@ See {@link module:caf_react/proxy_react}
 See {@link module:caf_react/plug_react} and  {@link module:caf_react/plug_ca_react}
 
 ### framework.json
-
+```
         // after "cp"
         {
             "name" : "react",
@@ -41,9 +41,9 @@ See {@link module:caf_react/plug_react} and  {@link module:caf_react/plug_ca_rea
                 "expiresInSec" : 10
             }
         }
-
+```
 ### ca.json
-
+```
             {
             "module": "caf_react#plug_ca",
             "name": "react",
@@ -64,3 +64,4 @@ See {@link module:caf_react/plug_react} and  {@link module:caf_react/plug_ca_rea
                 }
             ]
         }
+```
