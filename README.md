@@ -5,7 +5,8 @@ Co-design cloud assistants with your web app and IoT devices.
 See https://www.cafjs.com
 
 ## Library for React.js background rendering
-[![Build Status](https://travis-ci.org/cafjs/caf_react.svg?branch=master)](https://travis-ci.org/cafjs/caf_react)
+
+[![Build Status](https://github.com/cafjs/caf_react/actions/workflows/push.yml/badge.svg)](https://github.com/cafjs/caf_react/actions/workflows/push.yml)
 
 
 Reduces latency for React.js applications by server-rendering the UI with a CA.
