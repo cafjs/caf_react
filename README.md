@@ -15,7 +15,7 @@ Rendering could be triggered by a CA's state change, or periodically. The goal i
 
 To access that pre-rendered page we simply do a http GET using an unguessable cache key in the query:
 ```
-      http://foo.vcap.me:3000?cacheKey=dfgsraa44ww6632ss
+      http://foo.localtest.me:3000?cacheKey=dfgsraa44ww6632ss
 ```
 The page is cached by `Redis`, and any CA can serve this http request, eliminating redirections that increase latency.
 

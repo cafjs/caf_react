@@ -8,7 +8,7 @@ const request = require('request');
 
 const app = hello;
 
-const HOST='root-test.vcap.me';
+const HOST='root-test.localtest.me';
 const PORT=3000;
 const CA= 'antonio-react' +  myUtils.uniqueId();
 
@@ -48,7 +48,7 @@ module.exports = {
         var s;
         async.waterfall([
             function(cb) {
-                s = new cli.Session('ws://root-test.vcap.me:3000',CA);
+                s = new cli.Session('ws://root-test.localtest.me:3000',CA);
                 s.onopen = function() {
                     s.hello('foo', cb);
                 };
@@ -59,7 +59,7 @@ module.exports = {
                     s.render(cb);
                 }, 1000);
             }, function(res, cb) {
-                request('http://root-test.vcap.me:3000?cacheKey=foo',
+                request('http://root-test.localtest.me:3000?cacheKey=foo',
                         function (error, response, body) {
                             test.ok(!error);
                             test.equals(response.statusCode,
